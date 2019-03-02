@@ -2,10 +2,8 @@ language: ruby
 
 rvm: '2.5.0'
 
-rake: '12.3.2'
-
 script:
   - bundle install
-  - rake db:create
-  - rake db:migrate
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
   - bundle exec rspec
