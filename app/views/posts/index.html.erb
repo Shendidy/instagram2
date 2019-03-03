@@ -1,14 +1,15 @@
 <% @posts.each do |post| %>
-    <div class="card border-secondary mb-3" style="max-width: 60rem;">
-    <div class="card-header"><%= post.user[:user_name] %> - posted <%= post.when(post.updated_at) %></div>
-    <div class="card-body">
-      <p class="card-text">
-        <%= post.message %><br />
-        <%= link_to (image_tag post.image.url(:thumb)), post %>
-      </p>
-    </div>
-    </div>
-    <span style="text-align: left;">Ls Cs</span>
-    <span style="text-align: right;">Like - Comment - Edit - Delete</span>
-    <hr>
+  <div class="card border-secondary mb-3" style="max-width: 60rem;">
+  <div class="card-header"><%= post.user[:user_name] %> - posted <%= post.when(post.updated_at) %></div>
+  <div class="card-body">
+    <p class="card-text">
+      <%= post.message %><br />
+      <%= link_to (image_tag post.image.url(:thumb)), post %>
+    </p>
+  </div>
+  </div>
+  <span style="text-align: left;">Ls Cs</span>
+  <span style="text-align: right;">Like - Comment - Edit - Delete
+  </span>
+  <hr>
 <% end %>
