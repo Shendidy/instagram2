@@ -12,18 +12,20 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-      <a class="navbar-brand" style="color: white;">Minstagram
+      <a class="navbar-brand" style="color: white;">Minstagram -
         <% if current_user %>
-          <%=current_user[:user_name]%> - 
+          <%=current_user[:user_name]%> -
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, style:"color:white;"%>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, style:"color:white;" %><%= link_to "Sign in", new_user_session_path, style:"color:white;" %>
+          <%= link_to "Sign up", new_user_registration_path, style:"color:white;" %> - <%= link_to "Sign in", new_user_session_path, style:"color:white;" %>
         <% end %>
       </a>
     </nav>
 
-    <p class="notice"><%= notice %></p>
+    <!-- <p class="notice"><%= notice %></p> -->
     <p class="alert"><%= alert %></p>
+    <div class="col-md-4 mx-auto card" style="text-align: center;">
     <%= yield %>
+    </div>
   </body>
 </html>
