@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   # For paperclip to handle images
-  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100#" }
+  has_attached_file :image, styles: { large: "600x600#", medium: "300x300#", thumb: "100x100#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_presence_of :image # Ensures post must have images.
 
@@ -27,5 +27,9 @@ class Post < ApplicationRecord
       message = (Time.now - date).to_i.to_s + "on " + (date.strftime("%b %d. %Y - %H:%M:%S")).to_s
       return message
     end
+  end
+
+  def add_like(post)
+
   end
 end

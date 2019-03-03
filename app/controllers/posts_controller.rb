@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :like]
   before_action :authenticate_user!
 
   def index
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   def update
     # find_post
     if @post.update_attributes(post_params)
-      redirect_to post_path
+      redirect_to posts_path
     else
       flash.now[:alert] = "Couldn't update your Minsta, please try again or cancel!"
       render 'edit'
@@ -49,6 +49,11 @@ class PostsController < ApplicationController
       flash.now[:alert] = "We couldn't delete your Minsta, please try again!"
       render 'show'
     end
+  end
+
+  def like
+    # find_post
+    @post.add_like
   end
 
   private
