@@ -1,0 +1,5 @@
+<span style="text-align: right;">Like - Comment
+<% if @post.user_id.to_i === current_user.id.to_i %>
+   - Edit - Delete
+<% end %>
+</span>
