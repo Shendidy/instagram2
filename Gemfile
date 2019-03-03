@@ -62,3 +62,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # To enable signing in and out for tests
 gem 'rails-controller-testing'
+
+# To handle images in our app
+gem 'paperclip', '~> 6.1'

@@ -3,7 +3,8 @@
     <div class="card-header"><%= post.user[:user_name] %> - posted <%= post.when(post.updated_at) %></div>
     <div class="card-body">
       <p class="card-text">
-        <%= post.message %>
+        <%= post.message %><br />
+        <%= link_to (image_tag post.image.url(:thumb)), post %>
       </p>
     </div>
     </div>

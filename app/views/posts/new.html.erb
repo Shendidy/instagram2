@@ -1,7 +1,2 @@
 <h5 style="margin-top: 10px; padding: 10px;">Add a new Minsta</h5>
-<%= form_for @post do |form| %>
-  <%= form.text_area :message, class:"form-control", id:"exampleTextarea", rows:"3" %>
-  <br>
-  <%= form.submit "Save", class:"btn btn-primary btn-block"%>
-<% end %>
-<%= link_to 'Cancel', posts_path %>
+<%= render "posts/form" %>

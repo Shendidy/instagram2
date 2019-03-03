@@ -1,6 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
 
+  # For paperclip to handle images
+  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100#" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
   def when(date)
     since = Time.now.to_i - date.to_i
     case
