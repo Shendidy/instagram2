@@ -36,6 +36,13 @@ class PostsController < ApplicationController
 
   def destroy
     # find_post
+    if @post.destroy
+      flash[:alert] = "Your note has been deleted successfully"
+      redirect_to :action => 'index'
+    else
+      flash.now[:alert] = "We couldn't delete your note, please try again!"
+      render 'show'
+    end
   end
 
   private
