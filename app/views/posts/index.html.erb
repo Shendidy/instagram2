@@ -1,1 +1,17 @@
-<h2>Posts page</h2>
+<h5 style="margin-top: 10px; padding: 10px;">Add a new Minsta</h5>
+<%= form_for @post do |form| %>
+  <%= form.text_area :message, class:"form-control", id:"exampleTextarea", rows:"3" %>
+  <br>
+  <%= form.submit "Save", class:"btn btn-primary btn-block"%>
+<% end %>
+<hr>
+<% @posts.each do |post| %>
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+    <div class="card-header">Posted by: <%= current_user[:user_name] %> - on <%= post.updated_at.strftime("%b %d. %Y - %H:%M:%S") %></div>
+    <div class="card-body">
+      <p class="card-text">
+        <%= post.message %>
+      </p>
+    </div>
+    </div>
+<% end %>
