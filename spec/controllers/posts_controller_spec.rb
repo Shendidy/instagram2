@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-# RSpec.describe PostsController, type: :controller do
-#
-#   describe "GET /" do
-#     it "responds with 200" do
-#       user = User.create(user_name: 'testUser', email: 'test@test.com', password: "password", password_confirmation: "password")
-#       sign_in user
-#
-#       get :index
-#       expect(response).to have_http_status(200)
-#
-#       sign_out user
-#     end
-#   end
+RSpec.describe PostsController, type: :controller do
+
+  describe "GET /" do
+    it "responds with 200" do
+      user = User.create(user_name: 'testUser', email: 'test@test.com', password: "password", password_confirmation: "password")
+      sign_in user
+
+      get :index
+      expect(response).to have_http_status(200)
+
+      sign_out user
+    end
+  end
 #
 #   describe "GET /new " do
 #     it "responds with 302 if not signed in" do
@@ -54,4 +54,4 @@ require 'rails_helper'
 #       sign_out user
 #     end
 #   end
-# end
+end
