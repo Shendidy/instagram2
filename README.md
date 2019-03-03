@@ -5,6 +5,7 @@
 * User stories:
 
   - As a user, I want to signup and login to access my account.
+  - As a user, I want to be able to create new posts.
   - As a user, I want to see my posts any posts published by my friends.
   - As a user, I want to be able to edit or delete my posts and comments.
   - As a user, I want to be able to like my friends posts.
