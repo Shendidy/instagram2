@@ -32,15 +32,21 @@ class PostsController < ApplicationController
 
   def update
     # find_post
+    if @post.update_attributes(post_params)
+      redirect_to post_path
+    else
+      flash.now[:alert] = "Couldn't update your Minsta, please try again or cancel!"
+      render 'edit'
+    end
   end
 
   def destroy
     # find_post
     if @post.destroy
-      flash[:alert] = "Your note has been deleted successfully"
+      flash[:alert] = "Your Minsta has been deleted successfully"
       redirect_to :action => 'index'
     else
-      flash.now[:alert] = "We couldn't delete your note, please try again!"
+      flash.now[:alert] = "We couldn't delete your Minsta, please try again!"
       render 'show'
     end
   end
