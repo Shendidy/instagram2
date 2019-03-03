@@ -17,6 +17,6 @@ RSpec.feature "On signing up", type: :feature do
     fill_in "user[password]", with: "123456"
     fill_in "user[password_confirmation]", with: "123456"
     click_button ("Sign up")
-    expect(page).to have_content("Sign out")
+    expect(page).to have_content("Exit")
   end
 end
