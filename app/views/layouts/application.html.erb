@@ -13,7 +13,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width:100%; position: fixed; z-index:1000;">
 
-      <a class="navbar-brand" style="color: white;">Minstagrams -
+      <a class="navbar-brand" style="color: white;">Minstagram -
         <% if current_user %>
           <%=current_user[:user_name]%> -
           <%= link_to "Exit", destroy_user_session_path, method: :delete, style:"color:red;"%>
