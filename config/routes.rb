@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'posts/edit'
   get 'posts/like'
+  get 'posts/dislike'
 
   resources :posts
 

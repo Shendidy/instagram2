@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy, :like]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :like, :dislike]
   before_action :authenticate_user!
 
   def index
@@ -54,6 +54,22 @@ class PostsController < ApplicationController
   def like
     @current = current_user.id.to_s
     @post.likes = @post.like(@post.id, @current)
+    @post.dislikes = @post.remove_dislike(@post.dislikes, @current)
+    @post.likes = ',' if @post.likes == nil
+    @post.dislikes = ',' if @post.dislikes == nil
+    Post.find(@post.id).update_column(:likes, @post.likes)
+    Post.find(@post.id).update_column(:dislikes, @post.dislikes)
+
+    redirect_to posts_path(anchor: @post.id)
+  end
+
+  def dislike
+    @current = current_user.id.to_s
+    @post.dislikes = @post.dislike(@post.id, @current)
+    @post.likes = @post.remove_like(@post.likes, @current)
+    @post.likes = ',' if @post.likes == nil
+    @post.dislikes = ',' if @post.dislikes == nil
+    Post.find(@post.id).update_column(:dislikes, @post.dislikes)
     Post.find(@post.id).update_column(:likes, @post.likes)
 
     redirect_to posts_path(anchor: @post.id)

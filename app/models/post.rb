@@ -43,20 +43,55 @@ class Post < ApplicationRecord
 
   def like(post_id, current)
     @post = Post.find(post_id)
-    puts "Sherif1"
-    puts @post
     likes = @post.likes
-    puts "sherif2"
-    puts likes
-    likes = likes + current + ","
-    puts "sherif3"
-    puts likes
-    @post.likes = likes
-    puts "sherif4"
-    puts @post.likes
-    return @post.likes
+    dislikes = @post.dislikes
+    if can_like(likes, current)
+      likes += current + ","
+    else
+      remove_like(likes, current)
+    end
   end
 
-  def dislike(post_id)
+  def dislike(post_id, current)
+    @post = Post.find(post_id)
+    likes = @post.likes
+    dislikes = @post.dislikes
+    if can_dislike(dislikes, current)
+      dislikes += current + ","
+    else
+      remove_dislike(dislikes, current)
+    end
+  end
+
+  def can_like(likes, current)
+    return true if likes == ','
+    likes = likes.split(',')
+    likes.include?(current) ? false : true
+  end
+
+  def can_dislike(dislikes, current)
+    return true if dislikes == ','
+    dislikes = dislikes.split(',')
+    dislikes.include?(current) ? false : true
+  end
+
+  def remove_like(likes, current)
+    if !can_like(likes, current)
+      likes = likes.split(',')
+      likes.delete(current)
+      likes.delete("")
+      return ',' if likes.length == 0
+      likes = likes.join(',') + ','
+    end
+  end
+
+  def remove_dislike(dislikes, current)
+    if !can_dislike(dislikes, current)
+      dislikes = dislikes.split(',')
+      dislikes.delete(current)
+      dislikes.delete("")
+      return ',' if dislikes.length == 0
+      dislikes = dislikes.join(',') + ','
+    end
   end
 end
