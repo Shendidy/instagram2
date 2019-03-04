@@ -22,13 +22,13 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "After signing in" do
-    it "user can save new posts" do
+    it "user can't save new posts without pictures" do
       user = User.create(user_name: 'testUser', email: 'test@test.com', password: "password", password_confirmation: "password")
       sign_in user
 
-      post :create, params: { post: { message: "Hello, world!" } }
+      post :create, params: { post: { message: "Hello, world!",  } }
       expect(response).to redirect_to(posts_url)
-      expect(Post.find_by(message: "Hello, world!")).to be
+      expect(Post.find_by(message: "Hello, world!")).not_to be
 
       sign_out user
     end
