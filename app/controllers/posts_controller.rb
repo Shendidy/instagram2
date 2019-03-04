@@ -52,8 +52,11 @@ class PostsController < ApplicationController
   end
 
   def like
-    # find_post
-    @post.add_like
+    @current = current_user.id.to_s
+    @post.likes = @post.like(@post.id, @current)
+    Post.find(@post.id).update_column(:likes, @post.likes)
+
+    redirect_to posts_path(anchor: @post.id)
   end
 
   private

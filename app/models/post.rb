@@ -29,7 +29,34 @@ class Post < ApplicationRecord
     end
   end
 
-  def add_like(post)
+  def count_likes(likes)
+    a = likes.split(',')
+    a.delete("")
+    a.count
+  end
 
+  def count_dislikes(dislikes)
+    a = dislikes.split(',')
+    a.delete("")
+    a.count
+  end
+
+  def like(post_id, current)
+    @post = Post.find(post_id)
+    puts "Sherif1"
+    puts @post
+    likes = @post.likes
+    puts "sherif2"
+    puts likes
+    likes = likes + current + ","
+    puts "sherif3"
+    puts likes
+    @post.likes = likes
+    puts "sherif4"
+    puts @post.likes
+    return @post.likes
+  end
+
+  def dislike(post_id)
   end
 end

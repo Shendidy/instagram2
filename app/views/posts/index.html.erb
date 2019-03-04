@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
-  <div class="card border-secondary mb-3" style="max-width: 60rem;">
+  <% @post = post %>
+  <div class="card border-secondary mb-3" style="max-width: 60rem;" id="<%= post.id %>">
   <div class="card-header"><%= post.user[:user_name] %> - posted <%= post.when(post.updated_at) %></div>
   <div class="card-body">
     <p class="card-text">
@@ -9,7 +10,6 @@
   </div>
   </div>
   <%= render 'posts/reactions' %>
-  <% @post = post %>
   <%= render "posts/options" %>
   <hr>
 <% end %>
